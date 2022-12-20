@@ -13,30 +13,27 @@ if (navigator.serviceWorker) {
   })
 }
 
-const getWeather = async (URLAddress) => {
+const getImage = async (URLAddress) => {
   try {
-    const request = await fetch(URLAddress);
-    const jsonData = await request.json();
-    var tempK = jsonData.main.temp;
-    var tempC = 0;
-    const feeling = jsonData.weather[0];
-    const image = feeling.icon;
-
-    console.log(jsonData.weather);
-    document.getElementById("api-image").innerHTML =
-      "<img src='http://openweathermap.org/img/wn/" +
-      image +
-      "@2x.png' alt='Weather Icon' width='10%'><br><h5>";
-    (">");
-
-    tempC = tempK - 273.15;
-
+    const result = await fetch(URLAddress)
+    const jsonData = await result.json()
+    console.log(jsonData)
+    let celcius = jsonData.weather - 273.15
     document.getElementById("api-weather").innerHTML =
-      "The current weather is " + tempC.toFixed(2) + " °C";
-  } catch (err) {
-    console.log(err);
+    celcius
+    if (jsonData.artist_url != "none") {
+      document.getElementById("image-artist").innerHTML =
+      "<p>Artist: " +
+      '<a href="' +
+      jsonData.artist_url +
+      '">' +
+      jsonData.artist +
+      "</a>"
   }
-};
-getWeather(
-  "https://api.openweathermap.org/data/2.5/weather?lat=45.4211435&lon=-75.6900574&appid=fe1d80e1e103cff8c6afd190cad23fa5"
-);
+  
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+getImage("https://api.openweathermap.org/data/2.5/weather?lat=45.4211435&lon=-75.6900574&appid=fe1d80e1e103cff8c6afd190cad23fa5")
