@@ -17,7 +17,9 @@ const getImage = async (URLAddress) => {
   try {
     const result = await fetch(URLAddress)
     const jsonData = await result.json()
-    const image = feeling.icon
+    const realfeel = jsonData.weather[0];
+    const image = realfeel.icon;
+    
     console.log(jsonData)
     console.log(jsonData.weather)
     document.getElementById("api-image").innerHTML =
@@ -27,10 +29,14 @@ const getImage = async (URLAddress) => {
     ;(">")
 
     let celcius = 0
+
     let c = jsonData.main.temp - 273.15
+
     let temperature = C.toFixed(1)
+
     document.getElementById("api-weather").innerHTML =
       "<p>temperature in ottawa is </p>" + temperature + jsonData.main.temp
+
   } catch (err) {
     console.log(err)
   }
