@@ -19,7 +19,6 @@ const getImage = async (URLAddress) => {
     const jsonData = await result.json()
     console.log(jsonData)
     let celcius = 0
-<<<<<<< HEAD
     document.getElementById("api-weather").innerHTML =
     celcius = jsonData.main.temp - 273.15
   } catch (err) {
