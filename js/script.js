@@ -17,14 +17,14 @@ const getImage = async (URLAddress) => {
   try {
     const result = await fetch(URLAddress)
     const jsonData = await result.json()
-    const image = feeling.icon;
+    const image = feeling.icon
     console.log(jsonData)
-    console.log(jsonData.weather);
+    console.log(jsonData.weather)
     document.getElementById("api-image").innerHTML =
       "<img src='http://openweathermap.org/img/wn/" +
       image +
-      "@2x.png' alt='Weather Icon' width='10%'><br><h5>";
-    (">");
+      "@2x.png' alt='Weather Icon' width='10%'><br><h5>"
+    ;(">")
 
     let celcius = 0
     let c = jsonData.main.temp - 273.15
