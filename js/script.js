@@ -18,18 +18,9 @@ const getImage = async (URLAddress) => {
     const result = await fetch(URLAddress)
     const jsonData = await result.json()
     console.log(jsonData)
-    let celcius = jsonData.weather - 273.15
+    let celcius = 0
     document.getElementById("api-weather").innerHTML =
-    celcius
-    if (jsonData.artist_url != "none") {
-      document.getElementById("image-artist").innerHTML =
-      "<p>Artist: " +
-      '<a href="' +
-      jsonData.artist_url +
-      '">' +
-      jsonData.artist +
-      "</a>"
-  }
+    celcius = jsonData.weather - 273.15
   
   } catch (err) {
     console.log(err)
