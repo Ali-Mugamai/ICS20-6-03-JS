@@ -17,8 +17,8 @@ const getImage = async (URLAddress) => {
   try {
     const result = await fetch(URLAddress)
     const jsonData = await result.json()
-    const realfeel = jsonData.weather[0];
-    const image = realfeel.icon;
+    const realfeel = jsonData.weather[0]
+    const image = realfeel.icon
 
     console.log(jsonData)
     console.log(jsonData.weather)
